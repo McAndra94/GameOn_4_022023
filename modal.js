@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 const submitBtn = document.querySelectorAll(".btn-submit");
+// confirmation message
 const confirmMsg = document.querySelector("#confirmationMsg");
 const closeConfirmBtn = document.querySelectorAll(".btn-close");
 
@@ -47,7 +48,7 @@ const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const city = document.getElementsByName("location");
 
-// validation form
+// form validation
 function validate() {
   document.getElementById("firstError").classList.add("hidden");
   document.getElementById("lastError").classList.add("hidden");
@@ -55,26 +56,27 @@ function validate() {
   document.getElementById("birthdateError").classList.add("hidden");
   document.getElementById("quantityError").classList.add("hidden");
   document.getElementById("locationError").classList.add("hidden");
+  document.getElementById("conditionsError").classList.add("hidden");
 
   let isFormValid = true;
 
   // if a field is not valid, display error message underneath
-  if (form.first.value == "") {
+  if (form.first.value.trim().length < 2) {
     document.getElementById("firstError").classList.remove("hidden");
     isFormValid = false;
   }
 
-  if (form.last.value == "") {
+  if (form.last.value.trim().length < 2) {
     document.getElementById("lastError").classList.remove("hidden");
     isFormValid = false;
   }
 
-  if (form.email.value == "") {
+  if (form.email.value.trim() == "") {
     document.getElementById("emailError").classList.remove("hidden");
     isFormValid = false;
   }
 
-  if (form.birthdate.value == "") {
+  if (form.birthdate.value.trim() == "") {
     document.getElementById("birthdateError").classList.remove("hidden");
     isFormValid = false;
   }
@@ -86,6 +88,11 @@ function validate() {
 
   if (form.location.value == "") {
     document.getElementById("locationError").classList.remove("hidden");
+    isFormValid = false;
+  }
+
+  if (form.conditions.checked == "") {
+    document.getElementById("conditionsError").classList.remove("hidden");
     isFormValid = false;
   }
 
